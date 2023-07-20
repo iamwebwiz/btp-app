@@ -18,7 +18,7 @@ class SubscribersController extends Controller
 {
     public function index()
     {
-        return SubscriberResource::collection(Subscriber::paginate());
+        return SubscriberResource::collection(Subscriber::latest()->paginate());
     }
 
     public function show(int $id)
@@ -85,13 +85,10 @@ class SubscribersController extends Controller
 
             DB::beginTransaction();
 
-            if (empty($request->fields)) {
-                FieldSubscriber::whereSubscriberId($subscriber->id)->delete();
-            }
+            FieldSubscriber::whereSubscriberId($subscriber->id)->delete();
 
             foreach ($request->fields as $field) {
-                FieldSubscriber::whereSubscriberId($subscriber->id)->delete();
-                FieldSubscriber::updateOrCreate([
+                FieldSubscriber::create([
                     'field_id' => $field['field_id'],
                     'subscriber_id' => $subscriber->id,
                     'value' => $field['value'],

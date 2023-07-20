@@ -2,7 +2,8 @@
     <div class="p-10">
         <div class="mb-5 flex justify-between items-center">
             <div class="flex items-center">
-                <img src="/logo.png" alt="Logo" class="block h-9 w-auto fill-current" />
+                <img src="https://btp-assets.s3.eu-west-2.amazonaws.com/logo.png" alt="Logo"
+                    class="block h-9 w-auto fill-current" />
                 <a href="javascript:void(0)">
                     <h1 class="text-lg uppercase font-bold ml-5">Subscribers</h1>
                 </a>
@@ -14,7 +15,7 @@
         </div>
 
         <div class="table-responsive">
-            <table class="table table-striped">
+            <table class="table table-striped table-bordered">
                 <thead>
                     <tr>
                         <th scope="col">#</th>
@@ -22,8 +23,7 @@
                         <th scope="col">Email</th>
                         <th scope="col">Source</th>
                         <th scope="col">State</th>
-                        <th scope="col"></th>
-                        <th scope="col"></th>
+                        <th scope="col">Actions</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -37,9 +37,11 @@
                                 {{ subscriber.state }}
                             </span>
                         </td>
-                        <td><a :href="`/subscribers/${subscriber.id}`" class="font-bold">Edit</a></td>
-                        <td><button @click="deleteSubscriber(subscriber.id, index)"
-                                class="font-bold text-red-500">Delete</button></td>
+                        <td>
+                            <a :href="`/subscribers/${subscriber.id}`" class="font-bold">Edit</a>
+                            <button @click="deleteSubscriber(subscriber.id, index)"
+                                class="font-bold text-red-500 ml-5">Delete</button>
+                        </td>
                     </tr>
                 </tbody>
             </table>

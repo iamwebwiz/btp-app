@@ -2,7 +2,8 @@
     <div class="p-10">
         <div class="mb-5 flex justify-between items-center">
             <div class="flex items-center">
-                <img src="/logo.png" alt="Logo" class="block h-9 w-auto fill-current" />
+                <img src="https://btp-assets.s3.eu-west-2.amazonaws.com/logo.png" alt="Logo"
+                    class="block h-9 w-auto fill-current" />
                 <a href="/">
                     <h1 class="text-lg uppercase ml-5">Subscribers</h1>
                 </a>
@@ -24,7 +25,12 @@
             <div class="col-md-3">
                 <div class="form-group">
                     <label>Type</label>
-                    <input type="text" class="form-control" v-model="fieldType">
+                    <select class="form-control" v-model="fieldType">
+                        <option>string</option>
+                        <option>number</option>
+                        <option>boolean</option>
+                        <option>date</option>
+                    </select>
                 </div>
             </div>
             <div class="col-md-3 flex items-center">

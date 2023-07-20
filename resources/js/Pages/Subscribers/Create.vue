@@ -2,7 +2,7 @@
     <div class="p-10">
         <div class="mb-5 flex justify-between items-center">
             <div class="flex items-center">
-                <img src="/logo.png" alt="Logo" class="block h-9 w-auto fill-current" />
+                <img src="https://btp-assets.s3.eu-west-2.amazonaws.com/logo.png" alt="Logo" class="block h-9 w-auto fill-current" />
                 <a href="/">
                     <h1 class="text-lg uppercase font-bold ml-5">Subscribers</h1>
                 </a>
