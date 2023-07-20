@@ -2,27 +2,23 @@
 
 namespace App\Http\Requests\Subscriber;
 
+use App\Models\Subscriber;
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class CreateSubscriberRequest extends FormRequest
 {
-    /**
-     * Determine if the user is authorized to make this request.
-     */
-    public function authorize(): bool
-    {
-        return false;
-    }
-
-    /**
-     * Get the validation rules that apply to the request.
-     *
-     * @return array<string, \Illuminate\Contracts\Validation\ValidationRule|array|string>
-     */
-    public function rules(): array
+    public function rules()
     {
         return [
-            //
+            'email' => 'required|email:rfc,dns|unique:subscribers',
+            'name' => 'required|string|min:3',
+            'source' => ['required', Rule::in([
+                Subscriber::SOURCE_API,
+                Subscriber::SOURCE_FORMS,
+                Subscriber::SOURCE_IOS,
+                Subscriber::SOURCE_WEB,
+            ])],
         ];
     }
 }
