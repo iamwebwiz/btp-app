@@ -2,6 +2,7 @@
 
 namespace Database\Factories;
 
+use App\Models\Field;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 /**
@@ -14,10 +15,16 @@ class FieldFactory extends Factory
      *
      * @return array<string, mixed>
      */
-    public function definition(): array
+    public function definition()
     {
         return [
-            //
+            'title' => fake()->word(),
+            'type' => fake()->randomElement([
+                Field::TYPE_STRING,
+                Field::TYPE_NUMBER,
+                Field::TYPE_BOOLEAN,
+                Field::TYPE_DATE,
+            ]),
         ];
     }
 }

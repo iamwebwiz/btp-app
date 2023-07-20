@@ -24,11 +24,9 @@ class SubscribersController extends Controller
     public function show(int $id)
     {
         try {
-            $subscriber = Subscriber::find($id);
+            $subscriber = Subscriber::with(['fields'])->find($id);
 
             if (!$subscriber) throw new ModelNotFoundException('Subscriber does not exist');
-
-            $subscriber->load('fields');
 
             return new SubscriberResource($subscriber);
         } catch (ModelNotFoundException $exception) {
