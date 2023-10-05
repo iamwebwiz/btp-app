@@ -77,7 +77,7 @@ class FieldsController extends Controller
                 return response()->json([
                     'message' => 'Validation failed',
                     'errors' => $validation->errors(),
-                ], 403);
+                ], 422);
             }
 
             if ($request->title !== $field->title) $field->title = $request->title;
